@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FLIR AX8 71218488</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="http://192.168.200.17/public/css/normalize.min.css">
+    <link rel="stylesheet" href="http://192.168.200.17/public/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="http://192.168.200.17/public/css/lightbox.css">
+    <link rel="stylesheet" href="http://192.168.200.17/public/css/imgallery.css">
+
+    <link id="main-style" rel="stylesheet" href="http://192.168.200.17/public/css/FLIR/style-common.php">
+    <link id="page-style" rel="stylesheet" href="http://192.168.200.17/public/css/FLIR/style-index.php">
+    <link rel="shortcut icon" type="image/x-icon" href="http://192.168.200.17/public/img/favicon.ico">
+</head>
+
+<body>
+    <div class="header-container index-tab">
+        <nav class="header-nav">
+            <a class="current" href="/">CAMERA</a>
+            <div class="nav-edge"></div>
+            <a  href="http://192.168.200.17/settings">SETTINGS</a>
+            <div class="nav-edge"></div>
+            <a  href="http://192.168.200.17/storage/images">STORAGE</a>
+            <div class="nav-edge"></div>
+            <a  href="http://192.168.200.17/help">HELP</a>
+        </nav>
+                    <div id="logout-container">
+                <p id="logged-in-user">admin</p>
+                <p id="header-logout"><a href="http://192.168.200.17/home/logout">Log out</a></p>
+            </div>
+                <div id="header-logo"></div>
+    </div>
+<div class="main-container camera">
+	<div class="column" id="column-main">
+		<div class="panel" id="panel-top">
+					        <div class="buttonGroup" id="buttonGroup-image">
+		            <div class="button button-popup" id="button-image-mode" title="Adjust image mode">
+		        		<img class="dialog-arrow" src="http://192.168.200.17/public/img/dark_precision/Ic_Player_Play_Def.png"/>
+		                <div class="popup-helper">
+		                    <div class="popup popup-hoverable box-shadow-big" id="popup-image-mode">
+								<label><input type="radio" name="image-mode" value="FUSION"><span></span>Thermal MSX</label><br>
+								<label><input type="radio" name="image-mode" value="IR"><span></span>Thermal</label><br>
+								<label><input type="radio" name="image-mode" value="VISUAL"><span></span>Visual</label><br>
+		                    </div>
+		                </div>
+	                </div>
+		            <div class="button button-popup" id="button-distance" title="Adjust distance">
+		            	<img class="dialog-arrow" src="http://192.168.200.17/public/img/dark_precision/Ic_Player_Play_Def.png"/>
+		                <div class="popup-helper">
+		                	<div class="popup popup-hoverable box-shadow-big" id="popup-distance">
+		                    	<div class="slider" id="slider-distance"></div><p id="distance-value"></p>
+	                    	</div>
+		                </div>
+		            </div>
+		            <div class="button button-popup" id="button-lamp" title="Lamp settings">
+		            	<img class="dialog-arrow" src="http://192.168.200.17/public/img/dark_precision/Ic_Player_Play_Def.png"/>
+		                <div class="popup-helper">
+		                	<div class="popup popup-hoverable box-shadow-big" id="popup-lamp">
+		                		<label><input type="radio" name="lamp" value="true"><span></span>On</label><br>
+		                		<!--<label><input type="radio" name="lamp" value="onVisual"><span>On if Visual Image</span></label><br>
+		                		<label><input type="radio" name="lamp" value="onCapture"><span>On if Capture</span></label><br>-->
+		                		<label><input type="radio" name="lamp" value="false"><span></span>Off</label>
+		                	</div>
+		                </div>
+		            </div>
+		            <div class="button button-popup" id="button-flip" title="Flip video">
+		            	<img class="dialog-arrow" src="http://192.168.200.17/public/img/dark_precision/Ic_Player_Play_Def.png"/>
+		                <div class="popup-helper">
+		                	<div class="popup popup-hoverable box-shadow-big" id="popup-flip">
+		                		<label><input type="checkbox" name="flip" id="flip-h"><span></span>Horizontal</label>
+		                		<label><input type="checkbox" name="flip" id="flip-v"><span></span>Vertical</label>
+		                	</div>
+		                </div>
+		            </div>
+		            <div class="button button-popup" id="button-calibration-settings" title="Periodic calibration">
+		            	<img class="dialog-arrow" src="http://192.168.200.17/public/img/dark_precision/Ic_Player_Play_Def.png"/>
+	                	<div class="popup-helper">
+		                	<div class="popup popup-hoverable box-shadow-big" id="popup-calibration-settings">
+		                		<label id="calibrate-off"><input type="radio" class="calibration-settings" id="calibrate-off"><span></span>Off</label><br>
+		                		<label id="calibrate-auto-3"><input type="radio" class="calibration-settings" id="calibrate-auto-3"><span></span>Auto</label><br>
+		                		<label id="calibrate-auto-10"><input type="radio" class="calibration-settings" id="calibrate-auto-10"><span></span>Auto (~10 min)</label><br>
+		                		<label id="calibrate-auto-30"><input type="radio" class="calibration-settings" id="calibrate-auto-30"><span></span>Auto (~30 min)</label><br>
+		                		<label id="calibrate-auto-60"><input type="radio" class="calibration-settings" id="calibrate-auto-60"><span></span>Auto (~60 min)</label><br>
+		                	</div>
+	                	</div>
+	           		</div>
+	           		<div class="button" id="button-calibrate" title="Calibrate"></div>
+		        </div>
+		    		    		        <div class="buttonGroup" id="buttonGroup-measure">
+		            <div class="button button-spot interact" id="createSpot" title="Spot measurement"></div>
+		            <div class="button button-mbox interact" id="createBox" title="Box measurement"></div>
+		            <div class="button button-delta interact" id="createDelta" title="Delta measurement"></div>
+		            <div class="button button-popup" id="button-global-parameters" title="Global measurement parameters">
+		            	<img class="dialog-arrow" src="http://192.168.200.17/public/img/dark_precision/Ic_Player_Play_Def.png"/>
+		            	<div class="popup-helper">
+	                		<div class="popup popup-hoverable box-shadow-big" id="popup-global-parameters">
+	                			<p>Global parameters</p>
+	                			<div class="button button-global-reset" title="Set default values"><p>Default</p></div>
+	                			<hr>
+	                			<div class="left-adjusted">
+	                				<label>Emissivity<input class="global-emissivity" type="text" ></label><br>
+	                				<label>Reflected temperature (&deg;C):<input class="global-ambient-temp" type="text"></label><br>
+	                				<label>Relative humidity (&#37;):<input class="global-relative-humidity" type="text"></label><br>
+	                				<label>Atmospheric temperature (&deg;C):<input class="global-atmospheric-temp" type="text"></label>
+	                			</div>
+	                			<div class="right-adjusted">
+	                				<label>Distance (m):<input class="global-distance" type="text"></label><br>
+	                				<label>External IR window:<select class="global-external-window-active">
+		                				<option val="on">On</option>
+		                				<option val="off">Off</option>
+		                				</select>
+	                				</label><br>
+	                				<label id="extOptTempLabel">>> Temperature (&deg;C):<input class="global-external-window-temp" type="text"></label><br>
+	                				<label id="extOptTransLabel">>> Transmission (&#37;):<input class="global-external-window-transmission" type="text"></label>
+	                			</div>
+	                		</div>
+
+	                	</div>
+		            </div>
+		        </div>
+	       			</div>
+	    <div id="image-container">
+	    	<div id="measurements-container" class="measurements-container-class">
+	        	<img id="snapshot" src="http://192.168.200.17/snapshot.jpg"/>
+        	</div>
+	        <div id="sideInfo">
+	            <div class="scale" id="bw"></div>
+	        	<div class="isotherm" style="display:none"></div>
+				<input class="temp-global-max interact" data-value="0"/>
+	            <input class="temp-global-min interact" data-value="0"/>
+	            <div class="button button-auto-max" style="display:none">Auto</div>
+	            <div class="button button-auto-min" style="display:none">Auto</div>
+	        </div>
+	    </div>
+	    <div class="notification box-shadow-small"><p id="notification-text"></p></div>
+	    <div class="panel" id="panel-bottom">
+	    					<div class="buttonGroup" id="buttonGroup-recording">
+					<div class="button" id="button-play" title="Resume Video" style="display:none;">
+		            </div><div class="button" id="button-pause" title="Pause video">
+		            </div><div class="button" id="button-save-image" title="Save snapshot">
+		            </div><div class="button" id="button-save-video" title="Save video" style="display: none;">
+		            </div><div class="button" id="button-schedule" title="Schedule recordings" style="display: none;"></div>
+		        </div>
+	        			<div class="buttonGroup" id="buttonGroup-misc">
+	            <div class="button" id="button-hide" title="Hide overlay"></div>
+	            <div class="button" id="button-fullscreen" title="Full screen"></div>
+	        </div>
+	    </div>
+	</div><div class="column" id="column-tools">
+		<div class="panel">
+							<div class="buttonGroup" id="buttonGroup-preset">
+					<div class="button button-wide" id="load-preset" title="Load preset">Load preset<input id="preset-to-upload" type="file" name="file" accept=".tar" /></div>
+			        <div class="button button-wide" id="save-preset" title='Save preset'>Save preset</div>
+			    </div>
+		    	    </div>
+    	<div class="sidebar-title">Measurements & alarms<div id="expand-indicator"><p id="expand-p">-</p></div></div>
+    	<div class="sidebar-content measurements">
+    		<div class="sidebar-item" id="tempsens-bar-1">
+				<div class="button button-internal-temp no-interact" title="Internal temperature sensor"></div>
+				<div class="button button-alarm alarm-temp-internal interact" title="Alarm settings">
+		            		                <div class="popup popup-alarm box-shadow-big">
+		                    <p>Activate alarm:</p>
+		                    <select class="alarm-active">
+		                        <option value="yes">Yes</option>
+		                        <option value="no" selected>No</option>
+		                    </select>
+		                    <hr>
+		                    <div class="alarm-settings">
+		                        <p>Condition:</p>
+		                        <select class="alarm-condition">
+		                            <option value="ABOVE">Above</option>
+		                            <option value="BELOW">Below</option>
+		                        </select>
+		                        <br>
+		                        <p id="threshold-value-id">Threshold:</p>
+		                        <input type="text" class="alarm-value">
+		                        <br>
+		                        <p id="hysteresis-id">Hysteresis:</p>
+		                        <input type="number" class="alarm-hysteresis" data-default="3">
+		                        <br>
+		                        <p>Threshold time (ms):</p>
+		                        <input type="number" class="alarm-threshold" data-default="1000">
+		                        <br>
+		                        <p>Capture:</p>
+		                        <select class="alarm-capture">
+		                            <option value="Image">Image</option>
+		                            <option value="Video">Video</option>
+		                            <option value="None">None</option>
+		                        </select>
+		                        <br>
+		                        <p>Pulse time (ms)</p>
+		                        <input type="text" class="alarm-output-pulse" value={{pulseTime}}>
+		                        <br>
+		                    </div>
+		                    <div class="alarm-actions">
+		                        <p>Alarm action:</p>
+		                        <div class="left-adjusted">
+		                            <!--label><input class="alarm-action-overlay" type="checkbox"><span></span>Activate overlay</label>
+		                            <br-->
+		                            <label><input class="alarm-action-disableNuc" type="checkbox"><span></span>Disable calib.</label>
+		                            <br>
+		                            <label><input class="alarm-action-digital" type="checkbox"><span></span>Digital out</label>
+		                        </div>
+		                        <div class="right-adjusted">
+		                            <label><input type="checkbox" class="alarm-action-email" ><span></span>E-mail</label>
+		                            <br>
+		                            <label><input type="checkbox" class="alarm-action-ftp"><span></span>FTP</label>
+		                        </div>
+		                    </div>
+		                </div>
+		            				</div>
+				<p class="measurement-value internal-temp"></p>
+			</div>
+			<div class="sidebar-item" id="digin-bar-1">
+				<div class="button button-io no-interact" title="Digital Input"></div>
+				<div class="button button-alarm alarm-temp-digin interact" title="Alarm settings">
+							                <div class="popup popup-alarm box-shadow-big" id="digin-alarm">
+		                    <p>Activate alarm:</p>
+		                    <select class="alarm-active">
+		                        <option value="yes">Yes</option>
+		                        <option value="no" selected>No</option>
+		                    </select>
+		                    <hr>
+		                    <div class="alarm-settings">
+		                        <p id="threshold-value-id">Trigg on:</p>
+		                        <input type="text" class="alarm-value">
+		                        <br>
+		                        <p>Threshold time (ms):</p>
+		                        <input type="number" class="alarm-threshold" data-default="1000">
+		                        <br>
+		                        <p>Capture:</p>
+		                        <select class="alarm-capture">
+		                            <option value="Image">Image</option>
+		                            <option value="Video">Video</option>
+		                            <option value="None">None</option>
+		                        </select>
+		                        <br>
+		                        <p>Pulse time (ms)</p>
+		                        <input type="text" class="alarm-output-pulse" value={{pulseTime}}>
+		                        <br>
+		                    </div>
+		                    <div class="alarm-actions" id="digin-alarm-actions">
+		                        <p>Alarm action:</p>
+		                        <div class="left-adjusted">
+		                            <!--label><input class="alarm-action-overlay" type="checkbox"><span></span>Activate overlay</label>
+		                            <br-->
+		                            <label><input class="alarm-action-disableNuc" type="checkbox"><span></span>Disable calib.</label>
+		                            <br>
+		                            <label><input class="alarm-action-digital" type="checkbox"><span></span>Digital out</label>
+		                        </div>
+		                        <div class="right-adjusted">
+		                            <label><input type="checkbox" class="alarm-action-email" ><span></span>E-mail</label>
+		                            <br>
+		                            <label><input type="checkbox" class="alarm-action-ftp"><span></span>FTP</label>
+		                        </div>
+		                    </div>
+		                </div>
+		            		        </div>
+		        <p class="measurement-value digital-io-value"></p>
+			</div>
+    	</div>
+    		    	<div class="sidebar-title">Colorize<div id="expand-indicator"><p id="expand-p">-</p></div></div>
+	    	<div class="sidebar-content">
+	    		<select class="select-scale" style="display: none;">
+	    			<option>Histogram</option>
+	    			<option>Linear</option>
+	    		</select>
+	    		<select class="select-lock" style="display: none;">
+	    			<option>Lock to image</option>
+	    			<option>Lock to temperature</option>
+	    		</select>
+	    		<div class="overide-dropdown-arrow-div">
+    	            <img class="drop-down-arrow" src="http://192.168.200.17/public/img/dark_precision/Ic_Player_Play_Def.png" id="palette-dropdown"/>
+		    		<select class="select-palette">
+		    			<option value="arctic">Palette Arctic</option>
+		    			<option value="bw">Palette Gray</option>
+		    			<option value="iron">Palette Iron</option>
+		    			<option value="lava">Palette Lava</option>
+		    			<option value="rainbow">Palette Rainbow</option>
+		    			<option value="rainHC">Palette Rainbow HC</option>
+		    			<option value="bw-iso-above">Isotherm above</option>
+		    			<option value="bw-iso-below">Isotherm below</option>
+		    			<option value="bw-iso-interval">Isotherm interval</option>
+		    		</select>
+		    	</div>
+		    	<div class="isotherm-values" style="display:none">
+		    		<label>From - To<input class="isotherm-value" id="iso-value-low"><input class="isotherm-value" id="iso-value-high"></label>
+		    	</div>
+	    	</div>
+    	    		    	<div class="sidebar-title">Log information<div id="expand-indicator"><p id="expand-p">+</p></div></div>
+	    	<div class="sidebar-content" style="display:none">
+	    		<div class="sidebar-content" id="log-container"></div>
+	    		<hr id="log-hr">
+	    		<div class="log-buttons"><p class="log-button" id="log-clear">Clear</p><p class="log-button" id="log-save">Save</p></div>
+	    	</div>
+    	    	<div class="panel" id="panel-log" style="z-index:-1000"></div>
+	</div>
+</div>
+<audio id="alarmSound" src="http://192.168.200.17/public/audio/alarm.wav" type="audio/wav"></audio>
+<script id="sidebar-spot-template" type="text/x-handlebars-template">
+	<div class="sidebar-item spot-bar" id="spot-bar-{{id}}">
+        <div class="button button-spot interact" title="Spot {{label}}">
+            <div class="spot-label">{{label}}</div>
+                            <div class="popup popup-spot popup-local box-shadow-big" id="spot-{{id}}">
+                    <p>Local parameters:</p>
+                    <select class="local-active">
+                        <option value="on">On</option>
+                        <option value="off" selected>Off</option>
+                    </select>
+                    <hr>
+                    <div class="local-parameter-settings">
+                        <label>Emissivity<input class="local-emissivity" type="text" value={{emissivity}}></label><br>
+                        <label>Reflected temperature ({{tempUnitString}})<input class="local-reftemp" type="text" value={{reftemp}}></label><br>
+                        <label>Distance ({{distUnitString}})<input class="local-distance" type="text" value={{distance}}></label><br>
+                    </div>
+                    <br>
+                    <label>Reset to global values<div class="button button-local-reset" title="Reset to global values"><p id="reset-local-p">Reset</p></div></label><br>
+                </div>
+                    </div>
+                    <div class="button button-delete button-delete-row"></div>
+                <div class="button button-alarm alarm-temp-spot interact">
+                            <div class="popup popup-alarm box-shadow-big">
+                    <p>Activate alarm:</p>
+                    <select class="alarm-active">
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                    </select>
+                    <hr>
+                    <div class="alarm-settings">
+                        <p>Condition:</p>
+                        <select class="alarm-condition">
+                            {{#each condition}}
+                            <option value="{{value}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Threshold ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-value" value={{value}} data-default="0">
+                        <br>
+                        <p>Hysteresis ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-hysteresis" value={{hysteresis}} data-default="1">
+                        <br>
+                        <p>Threshold time (ms)</p>
+                        <input type="number" class="alarm-threshold" value={{threshold}} data-default="1000">
+                        <br>
+                        <p>Capture:</p>
+                        <select class="alarm-capture">
+                            {{#each capture}}
+                            <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Pulse time (ms)</p>
+                        <input type="text" class="alarm-output-pulse" value={{pulseTime}}>
+                        <br>
+                    </div>
+                    <div class="alarm-actions">
+                        <p>Alarm action:</p>
+                        <div class="left-adjusted">
+                            <!--label><input class="alarm-action-overlay" type="checkbox"><span></span>Activate overlay</label>
+                            <br-->
+                            <label><input class="alarm-action-disableNuc" type="checkbox" checked={{disableNuc}}><span></span>Disable calib.</label>
+                            <br>
+                            <label><input class="alarm-action-digital" type="checkbox"><span></span>Digital out</label>
+                        </div>
+                        <div class="right-adjusted">
+                            <label><input type="checkbox" class="alarm-action-email" checked={{email}} ><span></span>E-mail</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-ftp" checked={{ftp}}><span></span>FTP</label>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+        <p class="measurement-value temp-spot " data-value-prefix="{{valuePrefix}}" data-value="{{spotValue}}" data-label="">--&nbsp;{{tempUnitString}}</p>
+	</div>
+</script>
+
+<script id="sidebar-mbox-template" type="text/x-handlebars-template">
+    <div class="sidebar-item mbox-bar" id="mbox-bar-{{id}}">
+        <div class="button button-mbox interact" title="Box {{label}}">
+            <div class="spot-label">{{id}}</div>
+                            <div class="popup popup-mbox popup-local box-shadow-big" id="mbox-{{id}}">
+                    <p>Local parameters:</p>
+                    <select class="local-active">
+                        <option value="on">On</option>
+                        <option value="off" selected>Off</option>
+                    </select>
+                    <hr>
+                    <div class="local-parameter-settings">
+                        <label>Emissivity<input class="local-emissivity" type="text" value={{emissivity}}></label><br>
+                        <label>Reflected temperature ({{tempUnitString}})<input class="local-reftemp" type="text" value={{reftemp}}></label><br>
+                        <label>Distance ({{distUnitString}})<input class="local-distance" type="text" value={{distance}}></label><br>
+                    </div>
+                    <div class="measurement-settings">
+                        <label><input class="measure-calc measure-box-max" type="checkbox" checked={{measure_max}}><span></span>Measure box max</label><br>
+                        <label><input class="measure-calc measure-box-min" type="checkbox" checked={{measure_min}}><span></span>Measure box min</label><br>
+                        <label><input class="measure-calc measure-box-avg" type="checkbox" checked={{measure_avg}}><span></span>Measure box avg</label><br>
+                        <label><input class="measure-calc measure-box-iso" type="checkbox" checked={{measure_iso}}><span></span>Isotherm coverage (%)</label><br>
+                        <label><input class="measure-calc measure-box-markers" type="checkbox" checked={{measure_markers}}><span></span>Show max & min markers</label><br>
+                    </div>
+                    <br>
+                    <br>
+                    <label>Reset to global values<div class="button button-local-reset" title="Reset to global values"><p id="reset-local-p">Reset</p></div></label><br>
+                </div>
+                    </div>
+                    <div class="button button-delete button-delete-row"></div>
+                <div class="button button-alarm alarm-temp-max interact">
+                            <div class="popup popup-alarm box-shadow-big">
+                    <p>Activate alarm:</p>
+                    <select class="alarm-active">
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                    </select>
+                    <hr>
+                    <div class="alarm-settings">
+                        <p>Condition:</p>
+                        <select class="alarm-condition">
+                            {{#each condition}}
+                            <option value="{{value}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Threshold ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-value" value={{value}} data-default="0">
+                        <br>
+                        <p>Hysteresis ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-hysteresis" value={{hysteresis}} data-default="1">
+                        <br>
+                        <p>Threshold time (ms)</p>
+                        <input type="number" class="alarm-threshold" value={{threshold}} data-default="500">
+                        <br>
+                        <p>Capture:</p>
+                        <select class="alarm-capture">
+                            {{#each capture}}
+                            <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Pulse time (ms)</p>
+                        <input type="text" class="alarm-output-pulse" value={{pulseTime}}>
+                        <br>
+                    </div>
+                    <div class="alarm-actions">
+                        <p>Alarm action:</p>
+                        <div class="left-adjusted">
+                            <!--label><input type="checkbox"><span></span>Activate overlay</label>
+                            <br-->
+                            <label><input type="checkbox" class="alarm-action-disableNuc" checked={{disableNuc}}><span></span>Disable calib.</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-digital"><span></span>Digital out</label>
+                        </div>
+                        <div class="right-adjusted">
+                            <label><input type="checkbox" class="alarm-action-email" checked={{email}} ><span></span>E-mail</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-ftp" checked={{ftp}} ><span></span>FTP</label>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+        <p class="measurement-value temp-max " data-value-prefix="{{maxValuePrefix}}" data-value="{{maxT}}" data-label="max: ">max:&nbsp;--&nbsp;{{tempUnitString}}</p>
+        <br class="max-br">
+        <div class="button button-alarm alarm-temp-min interact">
+                            <div class="popup popup-alarm box-shadow-big">
+                    <p>Activate alarm:</p>
+                    <select class="alarm-active">
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                    </select>
+                    <hr>
+                    <div class="alarm-settings">
+                        <p>Condition:</p>
+                        <select class="alarm-condition">
+                            {{#each condition}}
+                            <option value="{{value}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Threshold ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-value" value={{value}} data-default="0">
+                        <br>
+                        <p>Hysteresis ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-hysteresis" value={{hysteresis}} data-default="1">
+                        <br>
+                        <p>Threshold time (ms)</p>
+                        <input type="number" class="alarm-threshold" value={{threshold}} data-default="500">
+                        <br>
+                        <p>Capture:</p>
+                        <select class="alarm-capture">
+                            {{#each capture}}
+                            <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Pulse time (ms)</p>
+                        <input type="text" class="alarm-output-pulse" value={{pulseTime}}>
+                        <br>
+                    </div>
+                    <div class="alarm-actions">
+                        <p>Alarm action:</p>
+                        <div class="left-adjusted">
+                            <!--label><input type="checkbox"><span></span>Activate overlay</label>
+                            <br-->
+                            <label><input type="checkbox" class="alarm-action-disableNuc" checked={{disableNuc}}><span></span>Disable calib.</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-digital"><span></span>Digital out</label>
+                        </div>
+                        <div class="right-adjusted">
+                            <label><input type="checkbox" class="alarm-action-email" checked={{email}} ><span></span>E-mail</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-ftp" checked={{ftp}} ><span></span>FTP</label>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+        <p class="measurement-value temp-min" data-value-prefix="{{minValuePrefix}}" data-value="{{minT}}" data-label="min: ">min:&nbsp;--&nbsp;{{tempUnitString}}</p>
+        <br class="min-br">
+        <div class="button button-alarm alarm-temp-average interact">
+                            <div class="popup popup-alarm box-shadow-big">
+                    <p>Activate alarm:</p>
+                    <select class="alarm-active">
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                    </select>
+                    <hr>
+                    <div class="alarm-settings">
+                        <p>Condition:</p>
+                        <select class="alarm-condition">
+                            {{#each condition}}
+                            <option value="{{value}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Threshold ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-value" value={{value}} data-default="0">
+                        <br>
+                        <p>Hysteresis ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-hysteresis" value={{hysteresis}} data-default="1">
+                        <br>
+                        <p>Threshold time (ms)</p>
+                        <input type="number" class="alarm-threshold" value={{threshold}} data-default="500">
+                        <br>
+                        <p>Capture:</p>
+                        <select class="alarm-capture">
+                            {{#each capture}}
+                            <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Pulse time (ms)</p>
+                        <input type="text" class="alarm-output-pulse" value={{pulseTime}}>
+                        <br>
+                    </div>
+                    <div class="alarm-actions">
+                        <p>Alarm action:</p>
+                        <div class="left-adjusted">
+                            <!--label><input type="checkbox"><span></span>Activate overlay</label>
+                            <br-->
+                            <label><input type="checkbox" class="alarm-action-disableNuc" checked={{disableNuc}}><span></span>Disable calib.</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-digital"><span></span>Digital out</label>
+                        </div>
+                        <div class="right-adjusted">
+                            <label><input type="checkbox" class="alarm-action-email" checked={{email}} ><span></span>E-mail</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-ftp" checked={{ftp}} ><span></span>FTP</label>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+        <p class="measurement-value temp-average" data-value-prefix="{{avgValuePrefix}}" data-value="{{avgT}}" data-label="avg: ">avg:&nbsp;--&nbsp;{{tempUnitString}}</p>
+        <br class="avg-br">
+        <div class="button button-alarm alarm-temp-iso interact">
+                            <div class="popup popup-alarm box-shadow-big">
+                    <p>Activate alarm:</p>
+                    <select class="alarm-active">
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                    </select>
+                    <hr>
+                    <div class="alarm-settings">
+                        <p>Condition:</p>
+                        <select class="alarm-condition">
+                            {{#each condition}}
+                            <option value="{{value}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Threshold (%):</p>
+                        <input type="number" class="alarm-value" value={{value}} data-default="50" min="0" max="100" step="0.1">
+                        <br>
+                        <p>Hysteresis (%):</p>
+                        <input type="number" class="alarm-hysteresis" value={{hysteresis}} data-default="1">
+                        <br>
+                        <p>Threshold time (ms)</p>
+                        <input type="number" class="alarm-threshold" value={{threshold}} data-default="500">
+                        <br>
+                        <p>Capture:</p>
+                        <select class="alarm-capture">
+                            {{#each capture}}
+                            <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Pulse time (ms)</p>
+                        <input type="text" class="alarm-output-pulse" value={{pulseTime}}>
+                        <br>
+                    </div>
+                    <div class="alarm-actions">
+                        <p>Alarm action:</p>
+                        <div class="left-adjusted">
+                            <!--label><input type="checkbox"><span></span>Activate overlay</label>
+                            <br-->
+                            <label><input type="checkbox" class="alarm-action-disableNuc" checked={{disableNuc}}><span></span>Disable calib.</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-digital"><span></span>Digital out</label>
+                        </div>
+                        <div class="right-adjusted">
+                            <label><input type="checkbox" class="alarm-action-email" checked={{email}} ><span></span>E-mail</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-ftp" checked={{ftp}} ><span></span>FTP</label>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+        <p class="measurement-value temp-iso" data-value-prefix="{{isoValuePrefix}}" data-value="{{iso}}" data-label="iso: ">iso:&nbsp;--&nbsp;%</p>
+        </div>
+</script>
+
+<script id="sidebar-delta-template" type="text/x-handlebars-template">
+    <div class="sidebar-item diff-bar" id="diff-bar-{{id}}">
+        <div class="button button-delta interact" id="delta-config-button">
+            <div class="spot-label">{{id}}</div>
+                            <div class="popup popup-diff box-shadow-big" id="diff-{{id}}">
+                    <select class="diff-term-1">
+                        <option value="reftemp">Temp</option>
+                    </select>
+                    <p>-</p>
+                    <select class="diff-term-2">
+                        <option value="reftemp">Temp</option>
+                    </select>
+                    <label>Temp:<input class="diff-reftemp" type="text" value={{reftemp}}></label>
+                </div>
+                    </div>
+                    <div class="button button-delete button-delete-row"></div>
+                <div class="button button-alarm alarm-temp-delta interact">
+                            <div class="popup popup-alarm box-shadow-big">
+                    <p>Activate alarm:</p>
+                    <select class="alarm-active">
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                    </select>
+                    <hr>
+                    <div class="alarm-settings">
+                        <p>Condition:</p>
+                        <select class="alarm-condition">
+                            {{#each condition}}
+                            <option value="{{value}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Threshold ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-value" value={{value}} data-default="0">
+                        <br>
+                        <p>Hysteresis ({{tempUnitString}}):</p>
+                        <input type="number" class="alarm-hysteresis" value={{hysteresis}} data-default="1">
+                        <br>
+                        <p>Threshold time (ms)</p>
+                        <input type="number" class="alarm-threshold" value={{threshold}} data-default="500">
+                        <br>
+                        <p>Capture:</p>
+                        <select class="alarm-capture">
+                            {{#each capture}}
+                            <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        <p>Pulse time (ms)</p>
+                        <input type="text" class="alarm-output-pulse" value={{pulseTime}}>
+                        <br>
+                    </div>
+                    <div class="alarm-actions">
+                        <p>Alarm action:</p>
+                        <div class="left-adjusted">
+                            <!--label><input class="alarm-action-overlay" type="checkbox"><span></span>Activate overlay</label>
+                            <br-->
+                            <label><input class="alarm-action-disableNuc" type="checkbox" checked={{disableNuc}}><span></span>Disable calib.</label>
+                            <br>
+                            <label><input class="alarm-action-digital" type="checkbox"><span></span>Digital out</label>
+                        </div>
+                        <div class="right-adjusted">
+                            <label><input type="checkbox" class="alarm-action-email" checked={{email}} ><span></span>E-mail</label>
+                            <br>
+                            <label><input type="checkbox" class="alarm-action-ftp" checked={{ftp}}><span></span>FTP</label>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+        <p class="measurement-value temp-diff " id="measurement-diff-value" data-value-prefix="{{valuePrefix}}" data-value="{{diffValue}}" data-label="" data-init="{{diffInit}}">--&nbsp;{{tempUnitString}}</p>
+    </div>
+</script>
+    <script src="http://192.168.200.17//public/js/fetch.min.js"></script>
+    <script src="http://192.168.200.17//public/js/es6-promise.min.js"></script>
+    <script src="http://192.168.200.17//public/js/jquery-1.11.1.min.js"></script>
+	<script src="http://192.168.200.17//public/js/jquery-ui.min.js"></script>
+	<script src="http://192.168.200.17//public/js/jquery.ui.touch-punch.min.js"></script>
+	<script src="http://192.168.200.17//public/js/jquery.cookie.js"></script>
+	<!--<script src="/public/js/jquery.lightbox.js"></script>-->
+	<!--<script src="/public/js/jquery.fullscreen.js"></script>-->
+	<script src="http://192.168.200.17//public/js/handlebars-v1.3.0.js"></script>
+	<script src="http://192.168.200.17//public/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<script src="http://192.168.200.17//public/js/FLIR/common.js"></script>
+	<script src="http://192.168.200.17//public/js/FLIR/index.js"></script>
+</body>
+</html>
